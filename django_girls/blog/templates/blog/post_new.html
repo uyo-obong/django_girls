@@ -1,0 +1,40 @@
+{% extends 'blog/master.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block master %}
+<header class="masthead" style="background: #0085a1; padding-bottom: 60px;">
+    <div class="overlay"></div>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-10">
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.title | as_crispy_field }}
+                </div>
+                <div class="form-group">
+                    {{ form.text | as_crispy_field }}
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="float-right btn btn-primary">Submit</button>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="btn btn-primary card-header">User Posts</div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<hr>
+{% endblock %}

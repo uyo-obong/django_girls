@@ -1,0 +1,40 @@
+{% extends 'blog/master.html' %}
+
+{% block master %}
+
+{% include 'blog/home_hero.html' %}
+
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10">
+      {% for post in posts %}
+      <div class="post-preview">
+        <a href="{% url 'post_detail' pk=post.pk %}">
+          <h4 >
+            {{ post.title }}
+          </h4>
+          <h4 class="post-subtitle">
+            {{ post.text | slice:104 | linebreaksbr }}...
+          </h4>
+        </a>
+        <p class="post-meta">Posted by
+          <a href="#">{{ post.author.username }}</a>
+          on {{ post.created_date }}</p>
+      </div>
+      {% endfor %}
+      <hr>
+
+      <!-- Pager -->
+      <div class="clearfix">
+        <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+      </div>
+    </div>
+
+    {% include 'blog/utils/sidebar.html' %}
+
+  </div>
+</div>
+
+<hr>
+{% endblock %}
