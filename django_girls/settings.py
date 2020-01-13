@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     # Custom Apps
-    'django_girls.blog'
+    'django_girls.blog',
+    'django_girls.users',
 
 ]
 
